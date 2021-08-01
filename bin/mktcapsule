@@ -1,0 +1,15 @@
+#!/bin/bash
+
+d=`pwd`
+cp $1 `dirname $0`/../timecapsule
+cd `dirname $0`/../timecapsule
+cargo run `basename $1` > src/2.txt
+rm `basename $1`
+echo $2 > src/4.txt
+cat /dev/urandom | base64 | fold -w 32 | head -n 1 > 6.txt
+cat src/1.txt src/2.txt src/3.txt src/4.txt src/5.txt src/6.txt src/7.txt > src/main.rs
+cargo build --release
+git checkout src/main/rs
+cp target/release/timecapsule $d/`basename $1`.tcapsule
+rm 2.txt 4.txt 6.txt
+
