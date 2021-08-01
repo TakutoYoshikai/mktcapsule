@@ -10,7 +10,7 @@ echo -n $key > src/4.txt
 echo -n $2 > src/6.txt
 cat src/1.txt src/2.txt src/3.txt src/4.txt src/5.txt src/6.txt src/7.txt > src/main.rs
 cargo build --release
-git checkout src/main.rs
+#git checkout src/main.rs
 cp target/release/timecapsule $d/`basename $1`.tcapsule
 rm src/2.txt src/4.txt src/6.txt
 
